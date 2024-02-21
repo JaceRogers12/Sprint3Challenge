@@ -85,8 +85,58 @@
       // }
      }
      let myTest = new Integers(2, -3, 4, 5)
-     console.log(myTest.ints)
+     //console.log(myTest.ints)
 
+     //New Section: What is going on?
+     let pancham = [1, 2, 3, 4, 5]
+      function minin(array) {
+       return array.map(function(int) {return int - 3})
+      }
+     let piplup = pancham.map(function (int) {return int - 3})
+     let prinplup = minin(pancham)
+    //  console.log(pancham)
+    //  console.log(piplup)
+    //  console.log(prinplup)
+
+      let pichu = {
+   intetgers: [1, 2, 3],
+   plusle: function() {
+     this.intetgers.push(7)
+     return this.intetgers
+   },
+    // electrike: function() {
+    //  this.integers = this.integers.map(function(int) {return int - 2})
+    // }
+ }
+
+    console.log(pichu.intetgers)
+  //    console.log(pichu.intetgers[1])
+  //  console.log(pichu.plusle())
+  // console.log(pichu)
+ //let manetric = minin(pichu.integers)
+ //console.log(manetric)
+
+// class Pokemon {
+//   constructor(...integers) {
+//     this.integers = [integers];
+//   }
+//   another = function() {
+//     this.integers.push(-4)
+//     return this.integers
+//   }
+// }
+
+// let Charmander = new Pokemon(3, 2, -5, 6)
+//   console.log(Charmander.integers)
+//   console.log(Charmander.integers[1])
+//  console.log(Charmander.another())
+//  console.log(Charmander)
+
+
+
+
+
+    //Challenge 2 NerfGun is all good
     // 👉 CHALLENGE 2 NerfGun
     class NerfGun {
       // 🧠 Constructor takes one argument: the total number of projectiles supported by the instance
@@ -104,22 +154,24 @@
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
         constructor(bullets) {
           this.projectiles = bullets;
+          this.capacity = bullets;
           this.safety = true;
-          this.reload = function(number) {
-             if (number <= bullets && number > 0) {
-              this.projectiles += number;
-              return `${number} projectiles left!`
-            } else if (number > bullets) {
-              this.projectiles = bullets;
-              return `${number} projectiles left!`
-            } else {
+        }
+        reload(number) {
+             if (typeof(number) !== "number" || number <= 0) {
               return "Error reloading!"
+             }
+             else if ((number + this.projectiles) <= this.capacity && number > 0) {
+              this.projectiles += number;
+              return `${this.projectiles} projectiles left!`
+            } else if ((number + this.projectiles) > this.capacity) {
+              this.projectiles = this.capacity;
+              return `${this.projectiles} projectiles left!`
             }
           }
-        }
         shoot() {
-          if (this.bullets > 0 && !this.safety) {
-            this.bullets--;
+          if (this.projectiles > 0 && !this.safety) {
+            this.projectiles--;
             return "Bang!"
           } else {
             return "Click!"
@@ -147,8 +199,32 @@
       //    ebook.next() // returns null
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
-
+      constructor(text, number) {
+        this.text = text;
+        this.page = number;
+      }
+      next() {
+        return this.text.slice(0,4)
+      }
+      back() {
+        return "maintenence in progress"
+      }
     }
+    let myBook = {
+      text: "Onceuponsometime",
+      page: 4,
+      nextPage() {
+        return this.text.slice(0,4)
+      }
+    }
+
+    //console.log(myBook.nextPage())
+    let string = "Onceuponsometime"
+    let first = string.slice(0,4)
+    //console.log(first)
+
+//let testBook = new EBook ("Onceuponsometime", 4)
+//console.log(testBook)
 
     // 👉 CHALLENGE 4 AntFarm
     class AntFarm {
